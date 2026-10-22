@@ -56,11 +56,12 @@ def sortear():
     lista_dentro = ''
     lista_quase = ''
     tentativa = 0
+    palavras_jogadas = []
 
-    return segredo, segredo_sem_acento, lista_fora, lista_dentro, lista_quase, tentativa, conteudo, conteudo_str
+    return segredo, segredo_sem_acento, lista_fora, lista_dentro, lista_quase, tentativa, conteudo, conteudo_str, palavras_jogadas
 
 
-segredo, segredo_sem_acento, lista_fora, lista_dentro, lista_quase, tentativa, conteudo, conteudo_str = sortear()
+segredo, segredo_sem_acento, lista_fora, lista_dentro, lista_quase, tentativa, conteudo, conteudo_str, palavras_jogadas = sortear()
 roubo = False
 palavras_sem_acento = remover_acentos(conteudo_str).split()
 
@@ -101,7 +102,7 @@ try:
             vitorias += 1
             print(
                 f'\033[2K> Acertou após: {tentativa + 1} tentativas!\n> Você ganhou {vitorias} vezes\n> Nova palavra sorteada!')
-            segredo, segredo_sem_acento, lista_fora, lista_dentro, lista_quase, tentativa, conteudo, conteudo_str = sortear()
+            segredo, segredo_sem_acento, lista_fora, lista_dentro, lista_quase, tentativa, conteudo, conteudo_str, palavras_jogadas = sortear()
 
         elif chute_sem_acento == segredo_sem_acento and roubo:
             print('\033[1A\033[2K', end='')
@@ -110,10 +111,16 @@ try:
             print()
             print(
                 f'\033[2K> Você roubou, vitoria desconsiderada.\n> Você ganhou {vitorias} vezes\n> Nova palavra sorteada!')
-            segredo, segredo_sem_acento, lista_fora, lista_dentro, lista_quase, tentativa, conteudo, conteudo_str = sortear()
+            segredo, segredo_sem_acento, lista_fora, lista_dentro, lista_quase, tentativa, conteudo, conteudo_str, palavras_jogadas = sortear()
             roubo = False
 
+        elif chute_sem_acento in palavras_jogadas:
+            print('\033[2KPalavra já jogada.')
+            sleep(1)
+            print(f'\033[1A\033[2K\033[1A\033[2K', end='')
+
         elif chute_sem_acento in palavras_sem_acento:
+            palavras_jogadas.append(chute_sem_acento)
             local = palavras_sem_acento.index(chute_sem_acento)
             tentativa += 1
             resultado = [None] * 5
@@ -159,3 +166,8 @@ except (KeyboardInterrupt, EOFError):
 
 print(f'\n\nA palavra secreta era: {segredo}')
 print('Jogo encerrado.\nObrigado por jogar!')
+
+try:
+    input('\nPressione ENTER para sair.')
+except (KeyboardInterrupt, EOFError):
+    pass
