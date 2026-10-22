@@ -32,14 +32,18 @@ Possui um contador de tentativas e partidas ganhas enquanto o jogo está aberto.
 
 ## Como rodar
 
+### Windows (.exe)
+Baixe o [termonal.exe na página de Releases](https://github.com/Odahvin/Termonal/releases/latest) e dê dois cliques. Não é preciso instalar mais nada.
+
+### Com o Python (Windows, Mac e Linux)
 1. Instale o Python
-2. Baixe o projeto e extraia em qualquer pasta, certifique-se de deixar o arquivo 'termonal-palavras.txt' e 'termonal.py' na mesma pasta
-3. Abra o terminal na pasta escolhida e execute: `python termonal.py`
+2. Baixe o .zip do projeto (botão verde **Code** -> **Download ZIP**) e extraia em qualquer pasta. Os arquivos `termonal.py` e `termonal-palavras.txt` precisam ficar na mesma pasta.
+3. Abra o terminal na pasta escolhida e execute: `python termonal.py` (no Mac e no Linux, pode ser `python3 termonal.py`)
 
 ### Notas
 
 O 'termonal-palavras.txt' possui cerca de 10 mil palavras, uma por linha, em minúsculo.<br>
-Você pode substituir por outro txt com o mesmo nome e seguindo as mesmas regras.
+Se escolher a versão .zip, você pode substituir por outro txt com o mesmo nome e seguindo as mesmas regras.
 
 Este é um projeto independente, não tem relação com o Termo ou qualquer outro jogo parecido.
 
